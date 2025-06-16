@@ -72,3 +72,433 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IZNAYAS ✿ Descubra sua Bias do IZNA</title>
+  <style>
+    body {
+      background-color: #ffeef8;
+      font-family: 'Arial', sans-serif;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #d63384;
+      margin-bottom: 10px;
+    }
+    .quiz-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff0f7;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      cursor: pointer;
+      user-select: none;
+    }
+    input[type="radio"] {
+      margin-right: 8px;
+    }
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    button {
+      background-color: #ff80b3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      user-select: none;
+    }
+    button:disabled {
+      background-color: #f4c7d7;
+      cursor: default;
+    }
+    button:hover:not(:disabled) {
+      background-color: #e65c9c;
+    }
+    #resultado {
+      display: none;
+      margin-top: 30px;
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      border: 2px dashed #ffb3d9;
+    }
+  </style>
+</head>
+<body>
+  <h1>✿ Descubra sua Bias do IZNA ✿</h1>
+  <div class="quiz-container">
+    <form id="quiz-form">
+
+      <!-- ETAPA 1 - Personalidade -->
+      <div class="etapa" data-etapa="1">
+        <h2>Etapa 1 – Personalidade</h2>
+        <div class="question">
+          <h3>1. Como você se descreve em momentos de calma?</h3>
+          <label><input type="radio" name="q1" value="A" required /> Serena e cuidadosa</label>
+          <label><input type="radio" name="q1" value="B" /> Charmosa e segura</label>
+          <label><input type="radio" name="q1" value="C" /> Silenciosa mas gentil</label>
+          <label><input type="radio" name="q1" value="D" /> Alegre e falante</label>
+          <label><input type="radio" name="q1" value="E" /> Brincalhona e energética</label>
+        </div>
+        <div class="question">
+          <h3>2. Como você age sob pressão?</h3>
+          <label><input type="radio" name="q2" value="A" required /> Organiza tudo e respira fundo</label>
+          <label><input type="radio" name="q2" value="B" /> Ri nervosamente e tenta manter o ritmo</label>
+          <label><input type="radio" name="q2" value="C" /> Fica na sua, mas aguenta firme</label>
+          <label><input type="radio" name="q2" value="D" /> Desvia com humor ou conversa</label>
+          <label><input type="radio" name="q2" value="E" /> Sorri, finge costume, mas sente tudo</label>
+        </div>
+        <div class="question">
+          <h3>3. Qual dessas qualidades é mais você?</h3>
+          <label><input type="radio" name="q3" value="A" required /> Inteligência e atenção</label>
+          <label><input type="radio" name="q3" value="B" /> Determinação e destaque</label>
+          <label><input type="radio" name="q3" value="C" /> Emoção e sensibilidade</label>
+          <label><input type="radio" name="q3" value="D" /> Carisma e leveza</label>
+          <label><input type="radio" name="q3" value="E" /> Versatilidade e brilho</label>
+        </div>
+        <div class="question">
+          <h3>4. O que te motiva a seguir em frente?</h3>
+          <label><input type="radio" name="q4" value="A" required /> Fazer o melhor por quem amo</label>
+          <label><input type="radio" name="q4" value="B" /> Me superar a cada dia</label>
+          <label><input type="radio" name="q4" value="C" /> Sentir e expressar emoções</label>
+          <label><input type="radio" name="q4" value="D" /> Espalhar alegria e leveza</label>
+          <label><input type="radio" name="q4" value="E" /> Evoluir em tudo que faço</label>
+        </div>
+        <div class="question">
+          <h3>5. Você se considera:</h3>
+          <label><input type="radio" name="q5" value="A" required /> Amorosa e calma</label>
+          <label><input type="radio" name="q5" value="B" /> Determinada e sexy</label>
+          <label><input type="radio" name="q5" value="C" /> Sensível e alegre</label>
+          <label><input type="radio" name="q5" value="D" /> Brincalhona e divertida</label>
+          <label><input type="radio" name="q5" value="E" /> Versátil e fofa</label>
+        </div>
+        <div class="navigation">
+          <button type="button" id="next1">Próxima etapa →</button>
+        </div>
+      </div>
+
+      <!-- ETAPA 2 - Estilo -->
+      <div class="etapa" data-etapa="2" style="display:none;">
+        <h2>Etapa 2 – Estilo</h2>
+        <div class="question">
+          <h3>6. Qual estilo de roupa você prefere?</h3>
+          <label><input type="radio" name="q6" value="A" required /> Clássico e elegante</label>
+          <label><input type="radio" name="q6" value="B" /> Moderno e chamativo</label>
+          <label><input type="radio" name="q6" value="C" /> Minimalista e fashion</label>
+          <label><input type="radio" name="q6" value="D" /> Descolado e divertido</label>
+          <label><input type="radio" name="q6" value="E" /> Variado e colorido</label>
+        </div>
+        <div class="question">
+          <h3>7. Qual acessório não pode faltar?</h3>
+          <label><input type="radio" name="q7" value="A" required /> Algo delicado e discreto</label>
+          <label><input type="radio" name="q7" value="B" /> Algo que chame atenção</label>
+          <label><input type="radio" name="q7" value="C" /> Um toque fashion e ousado</label>
+          <label><input type="radio" name="q7" value="D" /> Algo divertido e criativo</label>
+          <label><input type="radio" name="q7" value="E" /> Peças versáteis e únicas</label>
+        </div>
+        <div class="question">
+          <h3>8. Que cor você mais gosta de usar?</h3>
+          <label><input type="radio" name="q8" value="A" required /> Tons suaves e pastéis</label>
+          <label><input type="radio" name="q8" value="B" /> Cores vibrantes e quentes</label>
+          <label><input type="radio" name="q8" value="C" /> Preto, branco e cinza</label>
+          <label><input type="radio" name="q8" value="D" /> Cores divertidas e variadas</label>
+          <label><input type="radio" name="q8" value="E" /> Mistura de cores e estampas</label>
+        </div>
+        <div class="question">
+          <h3>9. Como você se sente ao mudar o visual?</h3>
+          <label><input type="radio" name="q9" value="A" required /> Confortável e segura</label>
+          <label><input type="radio" name="q9" value="B" /> Poderosa e ousada</label>
+          <label><input type="radio" name="q9" value="C" /> Confiante e estilosa</label>
+          <label><input type="radio" name="q9" value="D" /> Alegre e criativa</label>
+          <label><input type="radio" name="q9" value="E" /> Divertida e versátil</label>
+        </div>
+        <div class="question">
+          <h3>10. Você se considera:</h3>
+          <label><input type="radio" name="q10" value="A" required /> Elegante e delicada</label>
+          <label><input type="radio" name="q10" value="B" /> Fashion e sexy</label>
+          <label><input type="radio" name="q10" value="C" /> Minimalista e única</label>
+          <label><input type="radio" name="q10" value="D" /> Divertida e estilosa</label>
+          <label><input type="radio" name="q10" value="E" /> Versátil e charmosa</label>
+        </div>
+        <div class="navigation">
+          <button type="button" id="prev2">← Etapa anterior</button>
+          <button type="button" id="next2">Próxima etapa →</button>
+        </div>
+      </div>
+
+      <!-- ETAPA 3 - Hábitos e Rotinas -->
+      <div class="etapa" data-etapa="3" style="display:none;">
+        <h2>Etapa 3 – Hábitos e Rotinas</h2>
+        <div class="question">
+          <h3>11. Qual sua atividade favorita no tempo livre?</h3>
+          <label><input type="radio" name="q11" value="A" required /> Ler e estudar</label>
+          <label><input type="radio" name="q11" value="B" /> Dançar ou cantar</label>
+          <label><input type="radio" name="q11" value="C" /> Comer e descansar</label>
+          <label><input type="radio" name="q11" value="D" /> Sair com amigos</label>
+          <label><input type="name="q11" value="E" /> Experimentar coisas novas</label>
+        </div>
+        <div class="question">
+          <h3>12. Você é mais...</h3>
+          <label><input type="radio" name="q12" value="A" required /> Organizada e planejada</label>
+          <label><input type="radio" name="q12" value="B" /> Espontânea e animada</label>
+          <label><input type="radio" name="q12" value="C" /> Calma e relaxada</label>
+          <label><input type="radio" name="q12" value="D" /> Divertida e social</label>
+          <label><input type="radio" name="q12" value="E" /> Versátil e adaptável</label>
+        </div>
+        <div class="question">
+          <h3>13. Qual dessas comidas você prefere?</h3>
+          <label><input type="radio" name="q13" value="A" required /> Algo leve e saudável</label>
+          <label><input type="radio" name="q13" value="B" /> Comida saborosa e energética</label>
+          <label><input type="radio" name="q13" value="C" /> Petiscos e doces</label>
+          <label><input type="radio" name="q13" value="D" /> Lanches rápidos com amigos</label>
+          <label><input type="radio" name="q13" value="E" /> Qualquer coisa que me agrade</label>
+        </div>
+        <div class="question">
+          <h3>14. Como você enfrenta o cansaço?</h3>
+          <label><input type="radio" name="q14" value="A" required /> Dormindo cedo</label>
+          <label><input type="radio" name="q14" value="B" /> Se esforçando até o fim</label>
+          <label><input type="radio" name="q14" value="C" /> Pausando para relaxar</label>
+          <label><input type="radio" name="q14" value="D" /> Buscando apoio dos amigos</label>
+          <label><input type="radio" name="q14" value="E" /> Fazendo algo divertido para renovar</label>
+        </div>
+        <div class="question">
+          <h3>15. Você se considera:</h3>
+          <label><input type="radio" name="q15" value="A" required /> Focada e dedicada</label>
+          <label><input type="radio" name="q15" value="B" /> Enérgica e persistente</label>
+          <label><input type="radio" name="q15" value="C" /> Tranquila e sensível</label>
+          <label><input type="radio" name="q15" value="D" /> Alegre e comunicativa</label>
+          <label><input type="radio" name="q15" value="E" /> Adaptável e alegre</label>
+        </div>
+        <div class="navigation">
+          <button type="button" id="prev3">← Etapa anterior</button>
+          <button type="button" id="next3">Próxima etapa →</button>
+        </div>
+      </div>
+
+      <!-- ETAPA 4 - Comportamento em grupo -->
+      <div class="etapa" data-etapa="4" style="display:none;">
+        <h2>Etapa 4 – Comportamento em grupo</h2>
+        <div class="question">
+          <h3>16. Como você age quando está em grupo?</h3>
+          <label><input type="radio" name="q16" value="A" required /> Calma e atenta</label>
+          <label><input type="radio" name="q16" value="B" /> Líder natural</label>
+          <label><input type="radio" name="q16" value="C" /> Observadora e solidária</label>
+          <label><input type="radio" name="q16" value="D" /> Brincalhona e animada</label>
+          <label><input type="radio" name="q16" value="E" /> Alegre e versátil</label>
+        </div>
+        <div class="question">
+          <h3>17. O que você faz quando alguém está triste no grupo?</h3>
+          <label><input type="radio" name="q17" value="A" required /> Ofereço carinho e apoio</label>
+          <label><input type="radio" name="q17" value="B" /> Tento animar com brincadeiras</label>
+          <label><input type="radio" name="q17" value="C" /> Escuto com atenção</label>
+          <label><input type="radio" name="q17" value="D" /> Faço todos rirem para distrair</label>
+          <label><input type="radio" name="q17" value="E" /> Dou espaço mas estou presente</label>
+        </div>
+        <div class="question">
+          <h3>18. Você prefere em um grupo ser:</h3>
+          <label><input type="radio" name="q18" value="A" required /> Apoio tranquilo</label>
+          <label><input type="radio" name="q18" value="B" /> Centro das atenções</label>
+          <label><input type="radio" name="q18" value="C" /> Ouvir e aconselhar</label>
+          <label><input type="radio" name="q18" value="D" /> Animar e divertir</label>
+          <label><input type="radio" name="q18" value="E" /> Adaptar-se ao ambiente</label>
+        </div>
+        <div class="question">
+          <h3>19. Como você reage a desafios em grupo?</h3>
+          <label><input type="radio" name="q19" value="A" required /> Com calma e estratégia</label>
+          <label><input type="radio" name="q19" value="B" /> Com energia e força</label>
+          <label><input type="radio" name="q19" value="C" /> Com apoio e compreensão</label>
+          <label><input type="radio" name="q19" value="D" /> Com brincadeiras para aliviar</label>
+          <label><input type="radio" name="q19" value="E" /> Adaptando-se para ajudar</label>
+        </div>
+        <div class="question">
+          <h3>20. Você se considera em grupo:</h3>
+          <label><input type="radio" name="q20" value="A" required /> Sereno e confiável</label>
+          <label><input type="radio" name="q20" value="B" /> Forte e líder</label>
+          <label><input type="radio" name="q20" value="C" /> Carinhoso e atento</label>
+          <label><input type="radio" name="q20" value="D" /> Engraçado e animado</label>
+          <label><input type="radio" name="q20" value="E" /> Versátil e adaptável</label>
+        </div>
+        <div class="navigation">
+          <button type="button" id="prev4">← Etapa anterior</button>
+          <button type="button" id="next4">Próxima etapa →</button>
+        </div>
+      </div>
+
+      <!-- ETAPA 5 - Coisas curiosas -->
+      <div class="etapa" data-etapa="5" style="display:none;">
+        <h2>Etapa 5 – Coisas curiosas</h2>
+        <div class="question">
+          <h3>21. Qual animal você mais se identifica?</h3>
+          <label><input type="radio" name="q21" value="A" required /> Raposa</label>
+          <label><input type="radio" name="q21" value="B" /> Urso</label>
+          <label><input type="radio" name="q21" value="C" /> Urso polar</label>
+          <label><input type="radio" name="q21" value="D" /> Gato preto</label>
+          <label><input type="radio" name="q21" value="E" /> Cachorro</label>
+        </div>
+        <div class="question">
+          <h3>22. Qual palavra define seu estilo de vida?</h3>
+          <label><input type="radio" name="q22" value="A" required /> Serenidade</label>
+          <label><input type="radio" name="q22" value="B" /> Energia</label>
+          <label><input type="radio" name="q22" value="C" /> Sensibilidade</label>
+          <label><input type="radio" name="q22" value="D" /> Diversão</label>
+          <label><input type="radio" name="q22" value="E" /> Versatilidade</label>
+        </div>
+        <div class="question">
+          <h3>23. Se você fosse um personagem, seria:</h3>
+          <label><input type="radio" name="q23" value="A" required /> Calma e sábia</label>
+          <label><input type="radio" name="q23" value="B" /> Determinada e marcante</label>
+          <label><input type="radio" name="q23" value="C" /> Sensível e amorosa</label>
+          <label><input type="radio" name="q23" value="D" /> Divertida e brincalhona</label>
+          <label><input type="radio" name="q23" value="E" /> Versátil e única</label>
+        </div>
+        <div class="question">
+          <h3>24. Qual desses talentos você gostaria de ter?</h3>
+          <label><input type="radio" name="q24" value="A" required /> Liderança calma</label>
+          <label><input type="radio" name="q24" value="B" /> Expressão corporal poderosa</label>
+          <label><input type="radio" name="q24" value="C" /> Voz marcante e emotiva</label>
+          <label><input type="radio" name="q24" value="D" /> Dança divertida e cheia de energia</label>
+          <label><input type="radio" name="q24" value="E" /> Versatilidade artística</label>
+        </div>
+        <div class="question">
+          <h3>25. Como você se vê daqui a 5 anos?</h3>
+          <label><input type="radio" name="q25" value="A" required /> Tranquila e realizada</label>
+          <label><input type="radio" name="q25" value="B" /> Confiante e popular</label>
+          <label><input type="radio" name="q25" value="C" /> Feliz e expressiva</label>
+          <label><input type="radio" name="q25" value="D" /> Alegre e divertida</label>
+          <label><input type="radio" name="q25" value="E" /> Adaptável e bem-sucedida</label>
+        </div>
+        <div class="navigation">
+          <button type="button" id="prev5">← Etapa anterior</button>
+          <button type="submit" id="submit-btn">Finalizar Quiz</button>
+        </div>
+      </div>
+
+    </form>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    const etapas = document.querySelectorAll('.etapa');
+    const form = document.getElementById('quiz-form');
+    const resultadoDiv = document.getElementById('resultado');
+
+    // Botões de navegação
+    document.getElementById('next1').onclick = () => showEtapa(2);
+    document.getElementById('prev2').onclick = () => showEtapa(1);
+    document.getElementById('next2').onclick = () => showEtapa(3);
+    document.getElementById('prev3').onclick = () => showEtapa(2);
+    document.getElementById('next3').onclick = () => showEtapa(4);
+    document.getElementById('prev4').onclick = () => showEtapa(3);
+    document.getElementById('next4').onclick = () => showEtapa(5);
+    document.getElementById('prev5').onclick = () => showEtapa(4);
+
+    function showEtapa(num) {
+      etapas.forEach(etapa => {
+        etapa.style.display = etapa.dataset.etapa == num ? 'block' : 'none';
+      });
+      resultadoDiv.style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      // Coletar respostas
+      const respostas = {};
+      const totalQuestions = 25;
+      for (let i = 1; i <= totalQuestions; i++) {
+        const selected = form.querySelector(`input[name=q${i}]:checked`);
+        if (!selected) {
+          alert(`Por favor, responda a pergunta ${i}.`);
+          return;
+        }
+        respostas[`q${i}`] = selected.value;
+      }
+
+      // Contagem simples para bias por letra
+      // Cada alternativa representa uma bias:
+      // A = Tomioka Mai 🦊
+      // B = Bang Jeemin 🐻
+      // C = Yoon Jiyoon 🐻‍❄️
+      // D = Narai Koko 🐈‍⬛
+      // E = Ryu Sarang 🐶
+
+      const contagem = { A: 0, B: 0, C: 0, D: 0, E: 0 };
+      for (const key in respostas) {
+        contagem[respostas[key]]++;
+      }
+
+      // Descobrir maior
+      let maiorLetra = 'A';
+      let maiorValor = contagem['A'];
+      for (const letra in contagem) {
+        if (contagem[letra] > maiorValor) {
+          maiorValor = contagem[letra];
+          maiorLetra = letra;
+        }
+      }
+
+      // Mapear letra para integrante
+      const biasMap = {
+        A: {
+          nome: "Tomioka Mai 🦊",
+          descricao: "Calma, bonita, inteligente, cuidadosa, esforçada, amorosa e serena. Chamativa quando quer."
+        },
+        B: {
+          nome: "Bang Jeemin 🐻",
+          descricao: "Center esforçada, bonita, sexy, it girl em ascensão, desastrada, ri nervosa, forte na dança e canto."
+        },
+        C: {
+          nome: "Yoon Jiyoon 🐻‍❄️",
+          descricao: "Quietinha, poderosa no vocal, senso crítico de moda, chorona alegre, ama comer. Sexy girl vibe."
+        },
+        D: {
+          nome: "Narai Koko 🐈‍⬛",
+          descricao: "Brincalhona, estilosa, dançarina incrível, extrovertida, divertida, comparada ao Ni-ki (Enhypen)."
+        },
+        E: {
+          nome: "Ryu Sarang 🐶",
+          descricao: "Alegre, covinhas marcantes, fofa, versátil, all-rounder, sempre sorrindo, vibe falsa maknae."
+        }
+      };
+
+      // Mostrar resultado
+      resultadoDiv.innerHTML = `
+        <h2>Seu resultado é:</h2>
+        <h3>${biasMap[maiorLetra].nome}</h3>
+        <p>${biasMap[maiorLetra].descricao}</p>
+        <p><strong>Você escolheu a bias que mais combina com você!</strong></p>
+      `;
+      resultadoDiv.style.display = 'block';
+      // Esconder quiz
+      etapas.forEach(etapa => etapa.style.display = 'none');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
