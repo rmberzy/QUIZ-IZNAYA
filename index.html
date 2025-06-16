@@ -55,6 +55,10 @@
       color: #888;
     }
 
+    .etapa {
+      display: none; /* As etapas ficam ocultas */
+    }
+
     @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
   </style>
 </head>
@@ -63,15 +67,49 @@
   <p>Bem-vinda à fanpage interativa do IZNA! Descubra qual das 7 integrantes é a sua bias ✨</p>
   <button onclick="startQuiz()">Começar o Quiz</button>
 
+  <!-- Etapas do quiz -->
+  <div id="etapa1" class="etapa">
+    <h2>Etapa 1: Escolha sua integrante favorita!</h2>
+    <!-- Conteúdo da Etapa 1 -->
+    <button onclick="nextStep(2)">Próxima Etapa</button>
+  </div>
+
+  <div id="etapa2" class="etapa">
+    <h2>Etapa 2: Responda à pergunta seguinte!</h2>
+    <!-- Conteúdo da Etapa 2 -->
+    <button onclick="nextStep(3)">Próxima Etapa</button>
+  </div>
+
+  <!-- Outras etapas podem ser adicionadas aqui com IDs diferentes -->
+  
   <div class="footer">Feito com 💖 para IZNA</div>
 
   <script>
     function startQuiz() {
-    window.location.hash = '#inicio-do-quiz';
+      // Esconde todas as etapas
+      const etapas = document.querySelectorAll('.etapa');
+      etapas.forEach(etapa => {
+        etapa.style.display = 'none';
+      });
+
+      // Exibe a Etapa 1
+      document.getElementById('etapa1').style.display = 'block';
+    }
+
+    function nextStep(etapa) {
+      // Esconde todas as etapas
+      const etapas = document.querySelectorAll('.etapa');
+      etapas.forEach(etapaDiv => {
+        etapaDiv.style.display = 'none';
+      });
+
+      // Exibe a próxima etapa
+      document.getElementById('etapa' + etapa).style.display = 'block';
     }
   </script>
 </body>
 </html>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
